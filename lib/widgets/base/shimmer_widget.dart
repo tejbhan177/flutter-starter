@@ -14,18 +14,19 @@ class ShimmerWidget<D> extends StatelessWidget {
   final Widget Function(D data) child;
 
   const ShimmerWidget({
+    Key? key,
     required this.child,
     required this.shimmer,
     required this.wrapper,
     this.error,
     this.onRetry,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    if (wrapper.data != null)
+    if (wrapper.data != null) {
       return child(wrapper.data!);
-    else if (wrapper.error != null)
+    } else if (wrapper.error != null) {
       return error ??
           Container(
             width: double.infinity,
@@ -34,7 +35,7 @@ class ShimmerWidget<D> extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(wrapper.error!, style: Styles.tsPrimaryColorRegular18),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 PrimaryFilledButton(
                   text: Strings.retry.toUpperCase(),
                   onTap: onRetry ?? () {},
@@ -42,11 +43,12 @@ class ShimmerWidget<D> extends StatelessWidget {
               ],
             ),
           );
-    else
+    } else {
       return Shimmer.fromColors(
         child: shimmer,
         baseColor: AppColors.shimmerBaseColor,
         highlightColor: AppColors.shimmerHighlightColor,
       );
+    }
   }
 }

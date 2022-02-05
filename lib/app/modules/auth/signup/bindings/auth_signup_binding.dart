@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
-
-import '../controllers/auth_signup_controller.dart';
+import 'package:starter/app/modules/auth/signup/controllers/auth_signup_controller.dart';
 
 class AuthSignupBinding extends Bindings {
   @override
