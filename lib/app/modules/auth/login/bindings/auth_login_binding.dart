@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
-
-import '../controllers/auth_login_controller.dart';
+import 'package:starter/app/modules/auth/login/controllers/auth_login_controller.dart';
 
 class AuthLoginBinding extends Bindings {
   @override

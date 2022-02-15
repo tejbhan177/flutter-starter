@@ -11,13 +11,14 @@ class CustomTextField extends StatelessWidget {
   final TextFieldWrapper wrapper;
   final bool isEnabled;
 
-  CustomTextField({
+  const CustomTextField({
+    Key? key,
     required this.wrapper,
     required this.hintText,
     this.maxLength,
     this.inputType = TextInputType.text,
     this.isEnabled = true,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,25 +38,25 @@ class CustomTextField extends StatelessWidget {
           hintText: hintText,
           enabled: isEnabled,
           errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: AppColors.primaryColor,
             ),
             borderRadius: BorderRadius.circular(8.0),
           ),
           border: OutlineInputBorder(
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: AppColors.primaryColor,
             ),
             borderRadius: BorderRadius.circular(8.0),
           ),
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: AppColors.primaryColor,
             ),
             borderRadius: BorderRadius.circular(8.0),
           ),
           disabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: AppColors.primaryColor,
             ),
             borderRadius: BorderRadius.circular(8.0),

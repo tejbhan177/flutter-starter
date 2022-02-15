@@ -7,6 +7,8 @@ import 'package:starter/app/routes/app_pages.dart';
 import 'package:starter/app/theme/app_theme.dart';
 
 class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(

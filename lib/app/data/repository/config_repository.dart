@@ -7,7 +7,8 @@ import 'package:starter/utils/storage/storage_utils.dart';
 class ConfigRepository extends BaseRepositry {
   saveAppConfig() async {
     final response = await controller.get(path: URLs.appConfig);
-    if (!(response is APIException))
+    if (response is! APIException) {
       Storage.setAppConfig(AppConfigResponse.fromJson(response).data);
+    }
   }
 }
