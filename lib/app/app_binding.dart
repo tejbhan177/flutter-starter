@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+
 import 'package:starter/app/app_controller.dart';
 import 'package:starter/app/data/network/network_requester.dart';
 import 'package:starter/app/data/repository/config_repository.dart';

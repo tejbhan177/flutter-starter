@@ -23,6 +23,11 @@ dependencies:
   # UI
   shimmer: ^2.0.0
 
+  # Firebase
+  firebase_core: ^1.13.1
+  firebase_analytics: ^9.1.2
+  firebase_crashlytics: ^2.5.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

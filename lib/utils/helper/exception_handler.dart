@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
+
 import 'package:starter/app/data/models/response/error_response.dart';
 import 'package:starter/app/data/values/strings.dart';
 
