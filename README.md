@@ -2,15 +2,20 @@
 
 A new Flutter project.
 
-## Getting Started
+## Prerequisites
 
-This project is a starting point for a Flutter application.
+- Install the `flutterfire_cli`
+```
+dart pub global activate flutterfire_cli
+```
 
-A few resources to get you started if this is your first Flutter project:
+- Run the `configure` command, select the Firebase project and platforms
+```
+flutterfire configure
+```
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Download the configuration file from the Firebase Console
+    - For Android
+        - `google-services.json` Add this file into the android/app directory.
+    - For iOS
+        - `GoogleService-Info.plist` Add this file into the ios/runner directory.

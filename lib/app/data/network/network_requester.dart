@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+
 import 'package:starter/app/data/values/constants.dart';
 import 'package:starter/app/data/values/env.dart';
 import 'package:starter/utils/helper/exception_handler.dart';
@@ -46,8 +48,9 @@ class NetworkRequester {
     try {
       final response = await _dio.get(path, queryParameters: query);
       return response.data;
-    } on Exception catch (exception) {
-      return ExceptionHandler.handleError(exception);
+    } on Exception catch (error, stack) {
+      FirebaseCrashlytics.instance.recordError(error, stack);
+      return ExceptionHandler.handleError(error);
     }
   }
 
@@ -63,7 +66,8 @@ class NetworkRequester {
         data: data,
       );
       return response.data;
-    } on Exception catch (error) {
+    } on Exception catch (error, stack) {
+      FirebaseCrashlytics.instance.recordError(error, stack);
       return ExceptionHandler.handleError(error);
     }
   }
@@ -76,7 +80,8 @@ class NetworkRequester {
     try {
       final response = await _dio.put(path, queryParameters: query, data: data);
       return response.data;
-    } on Exception catch (error) {
+    } on Exception catch (error, stack) {
+      FirebaseCrashlytics.instance.recordError(error, stack);
       return ExceptionHandler.handleError(error);
     }
   }
@@ -90,7 +95,8 @@ class NetworkRequester {
       final response =
           await _dio.patch(path, queryParameters: query, data: data);
       return response.data;
-    } on Exception catch (error) {
+    } on Exception catch (error, stack) {
+      FirebaseCrashlytics.instance.recordError(error, stack);
       return ExceptionHandler.handleError(error);
     }
   }
@@ -104,7 +110,8 @@ class NetworkRequester {
       final response =
           await _dio.delete(path, queryParameters: query, data: data);
       return response.data;
-    } on Exception catch (error) {
+    } on Exception catch (error, stack) {
+      FirebaseCrashlytics.instance.recordError(error, stack);
       return ExceptionHandler.handleError(error);
     }
   }

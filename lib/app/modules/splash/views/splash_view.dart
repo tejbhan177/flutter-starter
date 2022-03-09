@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
+
 import 'package:starter/app/modules/splash/controllers/splash_controller.dart';
 
 class SplashView extends GetView<SplashController> {

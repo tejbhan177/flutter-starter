@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+
 import 'package:starter/app/modules/auth/login/bindings/auth_login_binding.dart';
 import 'package:starter/app/modules/auth/login/views/auth_login_view.dart';
 import 'package:starter/app/modules/auth/signup/bindings/auth_signup_binding.dart';

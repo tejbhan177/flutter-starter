@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+
 import 'package:starter/app/data/models/dto/response.dart';
 import 'package:starter/app/data/models/request/auth_request.dart';
 import 'package:starter/app/data/repository/user_repository.dart';

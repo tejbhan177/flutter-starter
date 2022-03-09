@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:shimmer/shimmer.dart';
+
 import 'package:starter/app/data/models/dto/response.dart';
 import 'package:starter/app/data/values/strings.dart';
 import 'package:starter/app/theme/app_colors.dart';
