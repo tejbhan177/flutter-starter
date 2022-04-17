@@ -7,8 +7,18 @@ version: 1.0.0+1
 environment:
   sdk: ">=2.16.0 <3.0.0"
 
+scripts:
+  build: flutter packages pub run build_runner build --delete-conflicting-outputs
+  watch: flutter packages pub run build_runner watch --delete-conflicting-outputs
+  test: flutter test
+  analyze: flutter analyze --no-pub
+  format: flutter format lib/**
+
 dependencies:
   flutter:
+    sdk: flutter
+
+  flutter_localizations:
     sdk: flutter
 
   cupertino_icons: ^1.0.4
@@ -16,26 +26,40 @@ dependencies:
   # GetX
   get: ^4.6.1
   get_storage: ^2.0.3
+  provider: ^6.0.2
 
   # Network
   dio: ^4.0.4
 
   # UI
   shimmer: ^2.0.0
+  flutter_platform_widgets: ^1.20.0
 
   # Firebase
   firebase_core: ^1.13.1
   firebase_analytics: ^9.1.2
   firebase_crashlytics: ^2.5.3
 
+  # Utilities
+  logging: ^1.0.2
+  get_it: ^7.2.0
+  device_info_plus: ^3.2.3
+  connectivity_plus: ^2.3.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  built_value_generator: ^8.2.0
+  build_runner: ^2.1.10
+  logger: ^1.1.0
   flutter_lints: ^1.0.0
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/lang/
 
   fonts:
     - family: poppins
