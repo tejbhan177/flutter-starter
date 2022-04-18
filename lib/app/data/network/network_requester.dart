@@ -1,11 +1,10 @@
 import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-
 import 'package:starter/app/data/values/constants.dart';
 import 'package:starter/app/data/values/env.dart';
-import 'package:starter/utils/helper/exception_handler.dart';
+
+import '../../../core/helper/exception_handler.dart';
 
 class NetworkRequester {
   late Dio _dio;

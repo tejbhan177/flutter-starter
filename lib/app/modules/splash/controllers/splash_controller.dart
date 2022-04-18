@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:starter/app/routes/app_pages.dart';
-import 'package:starter/utils/storage/storage_utils.dart';
+import 'package:starter/core/storage/storage_utils.dart';
 import '../../../../core/services/hardware_info/hardware_info_service.dart';
 import '../../../../locator.dart';
 

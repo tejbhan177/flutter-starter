@@ -3,8 +3,8 @@ import 'package:starter/app/data/models/dto/user.dart';
 import 'package:starter/app/data/models/request/auth_request.dart';
 import 'package:starter/app/data/models/response/user_response.dart';
 import 'package:starter/app/data/values/urls.dart';
-import 'package:starter/base/base_reposiotry.dart';
-import 'package:starter/utils/helper/exception_handler.dart';
+import 'package:starter/core/base/base_reposiotry.dart';
+import '../../../core/helper/exception_handler.dart';
 
 class UserRepository extends BaseRepositry {
   Future<RepoResponse<bool>> sendOTP(SendOTPRequest data) async {

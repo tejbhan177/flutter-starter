@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:starter/app/app_binding.dart';
 import 'package:starter/app/data/values/constants.dart';
-import 'package:starter/app/data/values/env.dart';
 import 'package:starter/app/data/values/strings.dart';
 import 'package:starter/app/routes/app_pages.dart';
 import 'package:starter/app/theme/app_theme.dart';
@@ -24,7 +23,6 @@ class App extends StatelessWidget {
       child: CoreManager(
         child: GetMaterialApp(
           builder: errorBuilder,
-          title: Env.title,
           navigatorKey: GlobalKeys.navigationKey,
           debugShowCheckedModeBanner: false,
           theme: AppTheme.theme,

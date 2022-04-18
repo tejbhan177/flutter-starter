@@ -34,8 +34,14 @@ class AppLocalizations {
   //  - translated from the corresponding /assets/lang/<local>.json files
   String? get appTitle => translate(Strings.app_title);
 
+  String? get splashViewTitle => translate(Strings.app_title);
+  String? get splashViewText => translate(Strings.splash_view_text);
+
   String? get homeViewTitle => translate(Strings.home_view_title);
-  String? get homeViewNoPosts => translate(Strings.home_view_no_posts);
+  String? get homeViewText => translate(Strings.home_view_title);
+
+  String? get verifyOtpTitle => translate(Strings.verify_otp_title);
+  String? get verifyOtpText => translate(Strings.verify_otp_text);
 
   String? get settingsViewTitle => translate(Strings.settings_view_title);
   String? get settingsViewPermissions =>
@@ -67,6 +73,7 @@ class AppLocalizations {
   String? get buttonConfirm => translate(Strings.button_confirm);
 
   String? get emailHint => translate(Strings.email_hint);
+  String? get phoneHint => translate(Strings.phone_hint);
   String? get passwordHint => translate(Strings.password_hint);
 
   // Validators

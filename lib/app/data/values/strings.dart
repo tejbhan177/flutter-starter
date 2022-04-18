@@ -9,8 +9,14 @@ class Strings {
   static const goBack = 'Go Back';
   static const app_title = 'app-title';
 
+  static const splash_view_title = 'splash-view-title';
+  static const splash_view_text = 'splash-view-text';
+
   static const home_view_title = 'home-view-title';
-  static const home_view_no_posts = 'home-view-no-posts';
+  static const home_view_text = 'home-view-text';
+
+  static const verify_otp_title = 'verify-otp-title';
+  static const verify_otp_text = 'verify-otp-text';
 
   static const settings_view_title = 'settings-view-title';
   static const settings_view_permissions = 'settings-view-permissions';
@@ -35,6 +41,7 @@ class Strings {
   static const button_confirm = 'button-confirm';
 
   static const email_hint = 'email-hint';
+  static const phone_hint = 'phone-hint';
   static const password_hint = 'password-hint';
 
   static const invalid_email = 'invalid-email';

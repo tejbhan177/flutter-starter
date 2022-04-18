@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
 import 'package:starter/app/modules/splash/controllers/splash_controller.dart';
+import '../../../../core/localization/localization.dart';
 
 class SplashView extends GetView<SplashController> {
   const SplashView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('SplashView'),
+        title: Text(local!.splashViewTitle!),
         centerTitle: true,
       ),
-      body: const Center(
+      body: Center(
         child: Text(
-          'SplashView is working',
-          style: TextStyle(fontSize: 20),
+          local.splashViewText!,
+          style: const TextStyle(fontSize: 20),
         ),
       ),
     );
