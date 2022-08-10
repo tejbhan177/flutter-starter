@@ -28,7 +28,7 @@ class AuthLoginController extends BaseController<UserRepository> {
         await repository.sendOTP(SendOTPRequest(phone: mobile));
     LoadingUtils.hideLoader();
 
-    Get.toNamed(Routes.AUTH_VERIFY_OTP, arguments: mobile);
+    Get.toNamed(Routes.HOME, arguments: mobile);
 
     // if (response.data ?? false) {
     //   Get.toNamed(Routes.AUTH_VERIFY_OTP, arguments: mobile);

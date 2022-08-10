@@ -31,26 +31,24 @@ class SnackBarServiceImpl implements SnackBarService {
 
   @override
   void completeSnackBar(SnackBarResponse response) {
-    locator<NavigationService>().pop();
     _snackBarCompleter!.complete(response);
     _snackBarCompleter = null;
   }
 
   void _showConfirmSnackBar(ConfirmSnackBarRequest request) {
     final local = AppLocalizations.of(Get.overlayContext!)!;
-    final style =
-        TextStyle(color: Theme.of(Get.overlayContext!).colorScheme.secondary);
 
-    GetSnackBar(
-      message: local.translate(request.message),
-      margin: const EdgeInsets.all(8),
+    ScaffoldMessenger.of(Get.overlayContext!).hideCurrentSnackBar();
+    ScaffoldMessenger.of(Get.overlayContext!).showSnackBar(SnackBar(
+      content: Text(
+        local.translate(request.message)!,
+      ),
       dismissDirection: DismissDirection.horizontal,
-      borderRadius: 8,
-      mainButton: TextButton(
-        child: Text(
-          local.translate(request.buttonText)!,
-          style: style,
-        ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+      margin: const EdgeInsets.all(8.0),
+      behavior: SnackBarBehavior.floating,
+      action: SnackBarAction(
+        label: local.translate(request.buttonText)!,
         onPressed: () {
           completeSnackBar(ConfirmSnackBarResponse((a) => a..confirmed = true));
           if (request.onPressed != null) {
@@ -58,6 +56,6 @@ class SnackBarServiceImpl implements SnackBarService {
           }
         },
       ),
-    ).show();
+    ));
   }
 }
