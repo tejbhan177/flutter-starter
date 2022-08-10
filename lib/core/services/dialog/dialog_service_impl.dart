@@ -1,5 +1,7 @@
 import 'dart:async';
-import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
+import 'dart:io';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logging/logging.dart';
 import '../../../app/data/models/request/alert_request/alert_request.dart';
@@ -7,7 +9,6 @@ import '../../../app/data/models/request/alert_request/confirm_alert_request.dar
 import '../../../app/data/models/response/alert_response/alert_response.dart';
 import '../../../app/data/models/response/alert_response/confirm_alert_response.dart';
 import '../../../locator.dart';
-import '../../../widgets/dialogs/confirm_dialog.dart';
 import '../../localization/localization.dart';
 import '../navigation/navigation_service.dart';
 import 'dialog_service.dart';
@@ -19,7 +20,7 @@ class DialogServiceImpl implements DialogService {
   Completer<AlertResponse>? _dialogCompleter;
 
   @override
-  Future<AlertResponse> showDialog(AlertRequest? request) {
+  Future<AlertResponse> showCustomDialog(AlertRequest? request) {
     _dialogCompleter = Completer<AlertResponse>();
 
     if (request is ConfirmAlertRequest) {
@@ -37,26 +38,67 @@ class DialogServiceImpl implements DialogService {
     _dialogCompleter = null;
   }
 
-  void _showConfirmAlert(ConfirmAlertRequest request) {
+  Future<dynamic> _showConfirmAlert(ConfirmAlertRequest request) {
     final local = AppLocalizations.of(Get.overlayContext!);
 
-    showPlatformDialog(
-      context: Get.overlayContext!,
-      builder: (context) => ConfirmDialog(
-        title: local!.translate(request.title)!,
-        description: local.translate(request.description)!,
-        buttonTitle: local.translate(request.buttonTitle),
-        onConfirmed: () {
-          if (!_dialogCompleter!.isCompleted) {
-            completeDialog(ConfirmAlertResponse((a) => a..confirmed = true));
-          }
-        },
-        onDenied: () {
-          if (!_dialogCompleter!.isCompleted) {
-            completeDialog(ConfirmAlertResponse((a) => a..confirmed = false));
-          }
-        },
-      ),
-    );
+    if (!Platform.isIOS) {
+      return showDialog(
+        context: Get.overlayContext!,
+        builder: (context) => AlertDialog(
+          title: Text(local!.translate(request.title)!),
+          content: Text(local.translate(request.description)!),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Cancel'),
+              onPressed: () {
+                if (!_dialogCompleter!.isCompleted) {
+                  completeDialog(
+                      ConfirmAlertResponse((a) => a..confirmed = false));
+                }
+              },
+            ),
+            TextButton(
+              child: Text(
+                local.translate(request.buttonTitle)!,
+              ),
+              onPressed: () {
+                if (!_dialogCompleter!.isCompleted) {
+                  completeDialog(
+                      ConfirmAlertResponse((a) => a..confirmed = true));
+                }
+              },
+            ),
+          ],
+        ),
+      );
+    } else {
+      return showCupertinoDialog(
+        context: Get.overlayContext!,
+        builder: (context) => CupertinoAlertDialog(
+          title: Text(local!.translate(request.title)!),
+          content: Text(local.translate(request.description)!),
+          actions: <Widget>[
+            CupertinoDialogAction(
+              child: const Text('Cancel'),
+              onPressed: () {
+                if (!_dialogCompleter!.isCompleted) {
+                  completeDialog(
+                      ConfirmAlertResponse((a) => a..confirmed = false));
+                }
+              },
+            ),
+            CupertinoDialogAction(
+              child: Text(local.translate(request.buttonTitle)!),
+              onPressed: () {
+                if (!_dialogCompleter!.isCompleted) {
+                  completeDialog(
+                      ConfirmAlertResponse((a) => a..confirmed = true));
+                }
+              },
+            ),
+          ],
+        ),
+      );
+    }
   }
 }

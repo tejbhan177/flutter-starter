@@ -26,14 +26,12 @@ dependencies:
   # GetX
   get: ^4.6.1
   get_storage: ^2.0.3
-  provider: ^6.0.2
 
   # Network
   dio: ^4.0.4
 
   # UI
   shimmer: ^2.0.0
-  flutter_platform_widgets: ^1.20.0
 
   # Firebase
   firebase_core: ^1.13.1
