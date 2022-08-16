@@ -1,9 +1,7 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:starter/app/data/models/request/alert_request/confirm_alert_request.dart';
 import 'package:starter/app/data/models/request/snack_bar_request/confirm_snack_bar_request.dart';
-import 'package:starter/app/data/models/response/alert_response/confirm_alert_response.dart';
 import 'package:starter/app/modules/home/controllers/home_controller.dart';
 import 'package:starter/core/constant/local_keys.dart';
 import '../../../../core/localization/localization.dart';
@@ -34,9 +32,10 @@ class HomeView extends GetView<HomeController> {
                     ..description = LocalKeys.settings_view_sign_out_desc
                     ..buttonTitle = LocalKeys.button_confirm,
                 );
-                final dialogResult = await (controller.dialogService!
-                        .showCustomDialog(alertRequest)
-                    as FutureOr<ConfirmAlertResponse>);
+                dynamic dialogResult;
+                await (controller.dialogService!
+                    .showCustomDialog(alertRequest)
+                    .then((value) => dialogResult = value));
 
                 if (dialogResult.confirmed) {
                   controller.log.fine('User has signed out');
