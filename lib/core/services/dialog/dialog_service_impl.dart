@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logging/logging.dart';
+import 'package:starter/core/constant/local_keys.dart';
 import '../../../app/data/models/request/alert_request/alert_request.dart';
 import '../../../app/data/models/request/alert_request/confirm_alert_request.dart';
 import '../../../app/data/models/response/alert_response/alert_response.dart';
@@ -79,7 +80,7 @@ class DialogServiceImpl implements DialogService {
           content: Text(local.translate(request.description)!),
           actions: <Widget>[
             CupertinoDialogAction(
-              child: const Text('Cancel'),
+              child: const Text(LocalKeys.button_cancel),
               onPressed: () {
                 if (!_dialogCompleter!.isCompleted) {
                   completeDialog(
