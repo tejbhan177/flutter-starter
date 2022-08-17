@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:starter/app/data/models/request/alert_request/confirm_alert_request.dart';
 import 'package:starter/app/data/models/request/snack_bar_request/confirm_snack_bar_request.dart';
+import 'package:starter/app/data/values/strings.dart';
 import 'package:starter/app/modules/home/controllers/home_controller.dart';
-import 'package:starter/core/constant/local_keys.dart';
 import '../../../../core/localization/localization.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -28,9 +28,9 @@ class HomeView extends GetView<HomeController> {
               onPressed: () async {
                 final alertRequest = ConfirmAlertRequest(
                   (r) => r
-                    ..title = LocalKeys.settings_view_sign_out
-                    ..description = LocalKeys.settings_view_sign_out_desc
-                    ..buttonTitle = LocalKeys.button_confirm,
+                    ..title = Strings.settings_view_sign_out
+                    ..description = Strings.settings_view_sign_out_desc
+                    ..buttonTitle = Strings.button_confirm,
                 );
                 dynamic dialogResult;
                 await (controller.dialogService!
@@ -46,9 +46,9 @@ class HomeView extends GetView<HomeController> {
               onPressed: () async {
                 final request = ConfirmSnackBarRequest(
                   (r) => r
-                    ..message = LocalKeys.snackbar_message
+                    ..message = Strings.snackbar_message
                     ..onPressed = () {}
-                    ..buttonText = LocalKeys.snackbar_action,
+                    ..buttonText = Strings.snackbar_action,
                 );
                 await controller.snackBarService!.showSnackBar(request);
               },
